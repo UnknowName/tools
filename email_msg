@@ -1,0 +1,28 @@
+#!/bin/env python
+#coding:utf8
+
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+def create_msg(msg_text,attach_file=''):
+    msg = MIMEMultipart()
+    msg_body = MIMEText(msg_text,'plain','utf8')
+    msg.attach(msg_body)
+    if attach_file:
+        with open(attach_file,'rb') as f:
+            file_type = attach_file.split('.')[-1]
+            image_types = ['png','gif','jpg','jpeg','bmp','psd']
+            if file_type in image_types:
+                form email import encoders
+                from email.mime.base import MIMEBase
+                attach = MIMEBase('image',file_type,filename=attach_file)
+                attach.set_payload(f.read())
+                encoders.encode_base64(attach)
+            else:
+                from email.mime.application import MIMEApplication
+                attach = MIMEApplication(f.read())
+            attach.add_header('Content-Disposition','attachment',filename=attach_file)
+            msg.attach(attach)
+            return msg 
+    else:
+        return msg 
