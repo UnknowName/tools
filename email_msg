@@ -13,7 +13,7 @@ def create_msg(msg_text,attach_file=''):
             file_type = attach_file.split('.')[-1]
             image_types = ['png','gif','jpg','jpeg','bmp','psd']
             if file_type in image_types:
-                form email import encoders
+                from email import encoders
                 from email.mime.base import MIMEBase
                 attach = MIMEBase('image',file_type,filename=attach_file)
                 attach.set_payload(f.read())
