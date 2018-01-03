@@ -9,7 +9,7 @@ import socket
 import logging
 from logging.handlers import DatagramHandler
 
-PY_VERSION = sys.version_info.major
+PY_VERSION = sys.version_info[0]
 
 
 def _check_ip(ip):
