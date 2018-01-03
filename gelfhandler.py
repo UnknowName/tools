@@ -49,10 +49,9 @@ class GELFHandler(DatagramHandler):
         log = json.dumps(log_dic)
         if PY_VERSION == 3:
             compres_str = zlib.compress(bytes(log, encoding='utf8'))
-            return compres_str
         else:
             compres_str = zlib.compress(log)
-            return compres_str
+        return compres_str
 
 
 if __name__ == '__main__':
