@@ -1,7 +1,7 @@
 #!/bin/env python
 #coding:utf8
 
-from project_name import settings
+from django.conf import settings
 from django.core.files.storage import Storage
 import oss2
 import time
