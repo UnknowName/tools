@@ -20,21 +20,16 @@ class AliOSS(Storage):
     def _open(self):
         return self.bucket
 
-
     def _save(self,name,content):
         "Upload the file to AliOSS,content is a file object"
          self.bucket.put_object(name,content)
          return name
 
-
     def get_valid_name(self,name):
         "Return the file name to get_available_name func"
         file_time = time.strftime('%Y%m%d%H%M%S',time.localtime())
         return  '{file_time}_{origin_name}'.format(file_time=file_time,origin_name=name)
-
-
         
     def get_available_name(self,name,max_length=100):
         "Return the file name to _save func"
         return name.split('/')[-1]
-
